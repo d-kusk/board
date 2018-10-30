@@ -3,15 +3,17 @@
 {% block title %}My amazing blog {%endblock%}
 
 {% block content %}
-<div class="board-detail">
-  <header class="board-detail__header">
-    <h2>{{board.title}}</h2>
-    <div class="time">
-      <time>{{object.created_at}}</time>
+<div class="c">
+  <div class="board-detail">
+    <header class="board-detail__header">
+      <h2>{{board.title}}</h2>
+      <div class="time">
+        <time>{{object.created_at}}</time>
+      </div>
+    </header>
+    <div class="board-detail__body" style="border-top: 2px solid #fa0; padding-top: 2em;">
+      {{ object.content }}
     </div>
-  </header>
-  <div class="board-detail__body">
-    {{ object.content }}
   </div>
 </div>
 {% endblock %}

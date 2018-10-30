@@ -3,12 +3,26 @@
 {% block title %}My amazing blog {%endblock%}
 
 {% block content %}
-<ul>
-  {% for item in object_list %}
-  <li>
-    <p class="title"><a href="/board/detail/{{ item.id }}">{{ item.title }}</a></p>
-    <time>{{ item.created_at }}</time>
-  </li>
-  {% endfor %}
-</ul>
+<style>
+  .board-archive {
+    list-style-type: none;
+    padding-left: 0;
+  }
+</style>
+<div class="board-list">
+  <div class="board-list__body">
+    <div class="c">
+      <ul class="row board-archive">
+        {% for item in object_list %}
+        <li class="4 col">
+          <div class="card">
+            <p class="title"><a href="/board/detail/{{ item.id }}">{{ item.title }}</a></p>
+            <time>{{ item.created_at }}</time>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}
