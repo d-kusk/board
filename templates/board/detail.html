@@ -3,5 +3,15 @@
 {% block title %}My amazing blog {%endblock%}
 
 {% block content %}
-detail
+<div class="board-detail">
+  <header class="board-detail__header">
+    <h2>{{board.title}}</h2>
+    <div class="time">
+      <time>{{object.created_at}}</time>
+    </div>
+  </header>
+  <div class="board-detail__body">
+    {{ object.content }}
+  </div>
+</div>
 {% endblock %}

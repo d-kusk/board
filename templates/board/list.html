@@ -6,10 +6,8 @@
 <ul>
   {% for item in object_list %}
   <li>
-    {{ item.id }}
-    <div class="title">{{ item.title }}</div>
-    <time>{{ item.pub_date }}</time>
-    <div class="content">{{ item.content }}</div>
+    <p class="title"><a href="/board/detail/{{ item.id }}">{{ item.title }}</a></p>
+    <time>{{ item.created_at }}</time>
   </li>
   {% endfor %}
 </ul>
