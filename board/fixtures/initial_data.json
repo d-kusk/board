@@ -1,0 +1,20 @@
+[
+  {
+    "model": "board.Board",
+    "pk": 1,
+    "fields": {
+      "title": "テスト投稿",
+      "content": "テストな内容です",
+      "pub_date": "2018-10-30"
+    }
+  },
+  {
+    "model": "board.Board",
+    "pk": 2,
+    "fields": {
+      "title": "テスト投稿2",
+      "content": "テストな内容です",
+      "pub_date": "2018-10-31"
+    }
+  }
+]

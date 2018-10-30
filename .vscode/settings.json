@@ -1,0 +1,5 @@
+{
+  "python.pythonPath": "/Users/daisuke/.local/share/virtualenvs/board-Y8PNY1nW/bin/python",
+  "python.linting.flake8Enabled": true,
+  "editor.formatOnSave": true
+}
