@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.urls import path
 
-from .views import ListView, DetailView
+from .views import List, Detail, Create
 
 urlpatterns = [
-    path('detail/<pk>', DetailView.as_view()),
-    path('', ListView.as_view())
+    path('add/', Create.as_view()),
+    path('detail/<pk>', Detail.as_view()),
+    path('', List.as_view())
 ]
