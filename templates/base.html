@@ -7,7 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{% block title %}Board{% endblock %}</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ajusa/lit@latest/dist/lit.css" />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/lib/lit/lit.css' %}" />
 </head>
 
 <body>
