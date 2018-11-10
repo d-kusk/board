@@ -1,5 +1,5 @@
 # from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib import messages
 
 from .models import Board
@@ -19,9 +19,26 @@ class Detail(DetailView):
 
 class Create(CreateView):
     model = Board
-    template_name = 'board/add.html'
+    template_name = 'board/create.html'
     form_class = RegisterForm
-    success_url = '/board'
+    success_url = '/board/list'
+
+    def form_valid(self, form):
+        ''' バリデーションを通った時 '''
+        messages.success(self.request, "保存しました")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        ''' バリデーションに失敗した時 '''
+        messages.warning(self.request, "保存できませんでした")
+        return super().form_invalid(form)
+
+
+class Update(UpdateView):
+    model = Board
+    template_name = 'board/update.html'
+    form_class = RegisterForm
+    success_url = '/board/list'
 
     def form_valid(self, form):
         ''' バリデーションを通った時 '''
