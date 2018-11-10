@@ -24,7 +24,7 @@
         <li class="4 col">
           <div class="card">
             <p class="title"><a href="/board/detail/{{ item.id }}">{{ item.title }}</a></p>
-            <time>{{ item.created_at }}</time>
+            <time>{{ item.created_at|date:"Y.m.d H:s" }}</time>
           </div>
         </li>
         {% endfor %}
