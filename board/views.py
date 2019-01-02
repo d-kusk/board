@@ -26,7 +26,7 @@ class Detail(ModelFormMixin, DetailView):
         return context
 
     def comment(self, board_id):
-        return BoardComment.objects.all()
+        return BoardComment.objects.filter(board_id=board_id)
 
     def form_valid(self, form):
         board_pk = self.kwargs['pk']
