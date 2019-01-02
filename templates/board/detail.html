@@ -13,12 +13,20 @@
       </div>
       <h2>{{board.title}}</h2>
       <div class="time">
-        <time>{{object.created_at|date:"Y.m.d H:s"}}</time>
+        <time>{{object.created_at | date:"Y.m.d H:s"}}</time>
       </div>
     </header>
     <div class="board-detail__body" style="border-top: 2px solid #fa0; padding-top: 2em;">
       {{ object.content }}
     </div>
+
+    <footer class="board-detail__footer" style="border-top: 2px solid #fa0; margin-top: 4em;">
+      <p>コメント一覧</p>
+      <div class="board-detail__comment">
+        {% include "./components/comment.html" %}
+        {% include "./components/comment_form.html" %}
+      </div>
+    </footer>
   </div>
 </div>
 {% endblock %}

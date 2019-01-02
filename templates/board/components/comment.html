@@ -1,0 +1,10 @@
+<ul class="comment-list">
+  {% for comment in comments %}
+  <li class="comment-list__item">
+    <div>{{ comment.comment }}</div>
+    <div class="time comment-time">
+      <time>{{ comment.created_at | date:"Y.m.d H:s" }}</time>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
