@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.utils import timezone
 
-from .models import Board
+from .models import Board, BoardComment
 from .forms import RegisterForm, CommentForm
 
 
@@ -20,13 +20,21 @@ class Detail(ModelFormMixin, DetailView):
     form_class = CommentForm
     template_name = 'board/detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comments"] = self.comment(self.kwargs['pk'])
+        return context
+
+    def comment(self, board_id):
+        return BoardComment.objects.all()
+
     def form_valid(self, form):
-        post_pk = self.kwargs['pk']
+        board_pk = self.kwargs['pk']
         comment = form.save(commit=False)
-        comment.board_id = get_object_or_404(Board, pk=post_pk)
+        comment.board_id = get_object_or_404(Board, pk=board_pk)
         comment.created_at = timezone.now()
         comment.save()
-        return redirect('board:detail', pk=post_pk)
+        return redirect('board:detail', pk=board_pk)
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()

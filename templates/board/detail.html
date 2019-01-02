@@ -13,28 +13,18 @@
       </div>
       <h2>{{board.title}}</h2>
       <div class="time">
-        <time>{{object.created_at|date:"Y.m.d H:s"}}</time>
+        <time>{{object.created_at | date:"Y.m.d H:s"}}</time>
       </div>
     </header>
     <div class="board-detail__body" style="border-top: 2px solid #fa0; padding-top: 2em;">
       {{ object.content }}
     </div>
 
-    <footer class="board-detail__footer" style="border-top: 2px solid #fa0; margin-top: 2em;">
-      <p>コメント</p>
+    <footer class="board-detail__footer" style="border-top: 2px solid #fa0; margin-top: 4em;">
+      <p>コメント一覧</p>
       <div class="board-detail__comment">
-        <form action="" method="POST">
-          {{ form.non_field_errors }}
-          {% for field in form %}
-          <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-            {{ field }}
-            {{ field.errors }}
-          </div>
-          {% endfor %}
-          {% csrf_token %}
-          <input type="submit" value="送信">
-        </form>
+        {% include "./components/comment.html" %}
+        {% include "./components/comment_form.html" %}
       </div>
     </footer>
   </div>
