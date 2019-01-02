@@ -20,3 +20,9 @@
 .comment-time {
     font-size: 0.8em;
 }
+
+input + label,
+textarea + label {
+    display: block;
+    margin-top: 2em;
+}
