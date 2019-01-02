@@ -4,9 +4,15 @@ from django.views.generic.edit import ModelFormMixin
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.utils import timezone
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Board, BoardComment
 from .forms import RegisterForm, CommentForm
+
+
+def redirect_to_list(request):
+    return HttpResponseRedirect(reverse('list'))
 
 
 class List(ListView):
