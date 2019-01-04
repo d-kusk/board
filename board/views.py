@@ -3,7 +3,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.edit import ModelFormMixin
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
-from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -36,10 +35,11 @@ class Detail(ModelFormMixin, DetailView):
 
     def form_valid(self, form):
         board_pk = self.kwargs['pk']
+        boardModel = get_object_or_404(Board, pk=board_pk)  # TODO エラーハンドリング入れる
         comment = form.save(commit=False)
-        comment.board_id = get_object_or_404(Board, pk=board_pk)
+        comment.board_id = boardModel.id
         comment.save()
-        return redirect('board:detail', pk=board_pk)
+        return redirect("detail", pk=board_pk)
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
