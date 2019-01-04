@@ -38,7 +38,6 @@ class Detail(ModelFormMixin, DetailView):
         board_pk = self.kwargs['pk']
         comment = form.save(commit=False)
         comment.board_id = get_object_or_404(Board, pk=board_pk)
-        comment.created_at = timezone.now()
         comment.save()
         return redirect('board:detail', pk=board_pk)
 
